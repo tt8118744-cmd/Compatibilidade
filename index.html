@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Quiz de 15 perguntas que compara propostas dos planos de governo de Lula e Flávio Bolsonaro entregues ao TSE.">
+<title>Afinidade Eleitoral 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Public+Sans:wght@400..700&display=swap">
+<style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif;background:#fafafa;color:#111}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+/* Tokens ---------------------------------------------------------------
+   Palette: papel de cédula (cinza-esverdeado frio) + tinta quase preta.
+   As duas cores de candidato (ocre e verde-azulado) são deliberadamente
+   NEUTRAS: não coincidem com as cores de nenhum dos dois partidos.
+   Tipografia: Bricolage Grotesque (títulos) + Public Sans (texto, pensada
+   para serviços cívicos). Layout: coluna única de 40rem, gutter de 16px. */
+:root{
+  --bg:#EEF1EE; --surface:#FFFFFF; --sel:#E6EEE9;
+  --ink:#16211D; --ink-2:#4B5853; --line:#CBD3CE; --line-2:#9EABA5;
+  --btn:#16211D; --btn-ink:#F4F7F5;
+  --focus:#1D5FD0;
+  --c1:#C97A12; --c1-bg:#FBEBD2; --c1-ink:#7C4300;
+  --c2:#0F8A96; --c2-bg:#D4EDF0; --c2-ink:#00535C;
+  --warn-bg:#FFF4D6; --warn-ink:#5C4300;
+  --font-d:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --font-b:"Public Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1512; --surface:#18211D; --sel:#22302A;
+    --ink:#E9EFEC; --ink-2:#A6B4AE; --line:#2C3A34; --line-2:#52645C;
+    --btn:#E9EFEC; --btn-ink:#0F1512;
+    --focus:#7FB0FF;
+    --c1:#E9A23B; --c1-bg:#3A2A10; --c1-ink:#F6C27E;
+    --c2:#3CB6C2; --c2-bg:#0F3338; --c2-ink:#86D9E2;
+    --warn-bg:#3A2F10; --warn-ink:#F2D58A;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#18211D; --sel:#22302A;
+  --ink:#E9EFEC; --ink-2:#A6B4AE; --line:#2C3A34; --line-2:#52645C;
+  --btn:#E9EFEC; --btn-ink:#0F1512;
+  --focus:#7FB0FF;
+  --c1:#E9A23B; --c1-bg:#3A2A10; --c1-ink:#F6C27E;
+  --c2:#3CB6C2; --c2-bg:#0F3338; --c2-ink:#86D9E2;
+  --warn-bg:#3A2F10; --warn-ink:#F2D58A;
+  color-scheme:dark;
+}
+body{background:var(--bg);color:var(--ink)}
+*{box-sizing:border-box}
+.app{
+  font-family:var(--font-b);font-size:1.0625rem;line-height:1.5;
+  max-width:40rem;margin-inline:auto;padding-inline:16px;padding-block:20px 56px;
+  color:var(--ink);
+}
+.app *{min-width:0}
+h1,h2,h3{font-family:var(--font-d);margin:0;text-wrap:balance;letter-spacing:-.01em;line-height:1.15}
+p{margin:0}
+a{color:inherit;text-underline-offset:3px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}
+
+/* marca */
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:28px;
+  font-family:var(--font-d);font-weight:700;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-2)}
+.brand i{display:inline-grid;grid-template-columns:repeat(2,9px);gap:3px}
+.brand i b{display:block;width:9px;height:9px;border-radius:2px;background:var(--ink)}
+.brand i b:nth-child(2),.brand i b:nth-child(3){background:var(--line-2)}
+
+/* intro */
+.hero h1{font-size:clamp(1.9rem,7.2vw,2.7rem);font-weight:800;margin-bottom:14px}
+.lead{color:var(--ink-2);font-size:1.1rem;max-width:34rem}
+.facts{list-style:none;margin:26px 0 30px;padding:0;display:grid;gap:14px}
+.facts li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.facts .n{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line-2);display:grid;place-items:center;
+  font-family:var(--font-d);font-weight:700;font-size:.95rem}
+.facts strong{display:block;font-weight:600}
+.facts span.d{color:var(--ink-2);font-size:.98rem}
+.btn{appearance:none;border:0;cursor:pointer;background:var(--btn);color:var(--btn-ink);
+  font-family:var(--font-d);font-weight:700;font-size:1.05rem;padding:15px 24px;border-radius:12px;min-height:52px}
+.btn:hover{opacity:.9}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2)}
+.btn.ghost:hover{background:var(--sel);opacity:1}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.fine{font-size:.9rem;color:var(--ink-2);margin-top:22px;max-width:34rem}
+
+/* progresso (contagem de votos) */
+.tally{display:flex;gap:3px;margin-bottom:14px}
+.tally span{flex:1;height:7px;border-radius:2px;background:var(--line)}
+.tally span.on{background:var(--ink)}
+.tally span.now{background:var(--line-2)}
+.meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px;
+  font-size:.88rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.meta .th{text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+
+/* pergunta */
+.q h2{font-size:clamp(1.4rem,5.4vw,1.85rem);font-weight:700;margin-bottom:22px}
+.opts{display:grid;gap:14px}
+.opt{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;text-align:left;
+  width:100%;padding:18px 16px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;cursor:pointer;
+  line-height:1.45;transition:border-color .12s,background-color .12s}
+.opt:hover{border-color:var(--line-2)}
+.opt .badge{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line-2);display:grid;place-items:center;
+  font-family:var(--font-d);font-weight:700;font-size:.98rem;background:var(--bg)}
+.opt[aria-pressed="true"]{border-color:var(--ink);background:var(--sel);box-shadow:inset 0 0 0 1px var(--ink)}
+.opt[aria-pressed="true"] .badge{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.gl{margin:20px 0 0;padding:12px 14px;border-radius:12px;background:var(--sel);border:1px solid var(--line);font-size:.88rem;line-height:1.45;color:var(--ink-2)}
+.gl .gk{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.gl ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.gl li strong{color:var(--ink);font-weight:700}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}
+.link{appearance:none;background:none;border:0;cursor:pointer;color:var(--ink-2);padding:10px 4px;text-decoration:underline;text-underline-offset:3px;font-size:.95rem}
+.link:disabled{opacity:.4;cursor:default;text-decoration:none}
+.hint{font-size:.85rem;color:var(--ink-2)}
+@media (hover:none){.hint{display:none}}
+
+/* resultado */
+.res .kick{font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--ink-2);margin-bottom:8px}
+.res h1{font-size:clamp(1.8rem,7vw,2.6rem);font-weight:800;margin-bottom:10px}
+.res h1 .nm{display:inline-flex;align-items:center;gap:10px}
+.res h1 .nm .mk{width:.55em;height:.55em}
+.verdict{color:var(--ink-2);font-size:1.05rem;margin-bottom:26px;max-width:34rem}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.fig{padding:16px;border-radius:14px;background:var(--surface);border:1.5px solid var(--line)}
+.fig.lead.c1{border:2.5px solid var(--c1)} .fig.lead.c2{border:2.5px solid var(--c2)}
+.fig .who{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.98rem;line-height:1.25}
+.fig .pct{font-family:var(--font-d);font-weight:800;font-size:clamp(2.3rem,10vw,3.3rem);line-height:1;margin:10px 0 4px;font-variant-numeric:tabular-nums}
+.fig .cnt{color:var(--ink-2);font-size:.9rem;font-variant-numeric:tabular-nums}
+.fig.c1 .pct{color:var(--c1-ink)} .fig.c2 .pct{color:var(--c2-ink)}
+.mk{display:inline-block;width:12px;height:12px;flex:none}
+.mk.c1{background:var(--c1);border-radius:2px} .mk.c2{background:var(--c2);border-radius:50%}
+.bar{display:flex;height:22px;border-radius:6px;overflow:hidden;background:var(--line);margin-bottom:34px}
+.bar .s{height:100%;transform-origin:left center;animation:grow .7s ease-out both}
+.bar .s.c1{background:var(--c1)} .bar .s.c2{background:var(--c2)}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.bar .s{animation:none}.opt{transition:none}}
+
+.sec{margin-top:36px}
+.sec h2{font-size:1.35rem;font-weight:700;margin-bottom:6px}
+.sec .sub{color:var(--ink-2);font-size:.95rem;margin-bottom:16px;max-width:34rem}
+.themes{display:grid;gap:14px}
+.theme{display:grid;gap:6px}
+.theme .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.98rem}
+.theme .top b{font-weight:600}
+.theme .top span{color:var(--ink-2);font-size:.9rem;font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}
+.tb{display:flex;height:12px;border-radius:4px;overflow:hidden;background:var(--line)}
+.tb .s.c1{background:var(--c1)} .tb .s.c2{background:var(--c2)}
+
+details.rv{border-top:1px solid var(--line)}
+details.rv:last-of-type{border-bottom:1px solid var(--line)}
+details.rv summary{list-style:none;cursor:pointer;padding:14px 0;display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:start}
+details.rv summary::-webkit-details-marker{display:none}
+details.rv summary .num{font-family:var(--font-d);font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+details.rv summary .st{font-size:.98rem;line-height:1.35}
+details.rv summary .st small{display:block;color:var(--ink-2);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.chip.c1{background:var(--c1-bg);color:var(--c1-ink)} .chip.c2{background:var(--c2-bg);color:var(--c2-ink)}
+.chip .mk{width:8px;height:8px}
+.rvb{padding:0 0 18px 40px;display:grid;gap:12px}
+.rvo{padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);display:grid;gap:8px}
+.rvo.mine{border-color:var(--ink)}
+.rvo .tx{font-size:.98rem;line-height:1.45}
+.rvo .tag{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rvo .tag em{font-style:normal;font-size:.78rem;color:var(--ink-2)}
+.src{display:grid;gap:5px;border-top:1px dashed var(--line);padding-top:9px}
+.src .sl{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-2);font-weight:600}
+.src ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.src li{font-size:.86rem;line-height:1.4;overflow-wrap:anywhere}
+.src li a{font-weight:600}
+.src .dt{color:var(--ink-2);white-space:nowrap}
+.src .pg{font-size:.84rem;color:var(--ink-2);line-height:1.4;overflow-wrap:anywhere}
+.src .pg a{color:var(--ink)}
+.src .nt{font-size:.82rem;line-height:1.4;padding:6px 9px;border-radius:6px;background:var(--sel);color:var(--ink)}
+
+.about{margin-top:36px;padding:18px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);font-size:.95rem}
+.about h2{font-size:1.1rem;margin-bottom:10px}
+.about ul{margin:0;padding-left:1.1em;display:grid;gap:8px}
+.about li{color:var(--ink-2)}
+.about li strong{color:var(--ink);font-weight:600}
+.again{margin-top:30px}
+
+@media (max-width:420px){
+  .figs{grid-template-columns:1fr}
+  details.rv summary{grid-template-columns:28px 1fr}
+  details.rv summary .chip{grid-column:2;justify-self:start}
+  .rvb{padding-left:0}
+}
+</style>
+
+<div class="app" id="app">
+  <div class="brand"><i aria-hidden="true"><b></b><b></b><b></b><b></b></i><span>Afinidade Eleitoral 2026</span></div>
+  <main id="view" aria-live="polite"></main>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------------------------------------------------------------
+   Candidatos (ordem alfabética pelo primeiro nome) — só aparecem no fim.
+--------------------------------------------------------------------- */
+var PDF = {
+  pt:"https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+  pl:"https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pl/@@display-file/file/proposta-pl.pdf"
+};
+var CAND = {
+  pl:{name:"Flávio Bolsonaro", party:"PL", cls:"c1"},
+  pt:{name:"Lula",             party:"PT", cls:"c2"}
+};
+var CAND_ORDER = ["pl","pt"];
+
+var THEMES = {
+  seg:"Segurança e defesa",
+  eco:"Economia e trabalho",
+  soc:"Proteção social e famílias",
+  edu:"Educação",
+  sau:"Saúde",
+  amb:"Meio ambiente, energia e campo",
+  ins:"Instituições e mundo"
+};
+var THEME_ORDER = ["seg","eco","soc","edu","sau","amb","ins"];
+
+/* ---------------------------------------------------------------------
+   15 perguntas, escolhidas entre as de maior divergência nos temas mais centrais.
+   Cada alternativa descreve uma proposta SEM citar partido ou candidato.
+   A única fonte é o plano de governo entregue ao TSE (PDF): página(s) + resumo do que o plano diz.
+   o(texto da alternativa, página(s) do plano, resumo do que o plano diz)
+--------------------------------------------------------------------- */
+function o(t,g,n){return {t:t,g:g,n:n};}
+var Q = [
+/* 1 */ {th:"seg", q:"Para enfrentar as facções criminosas, qual caminho você prefere?",
+  gl:[["PCC e CV","Primeiro Comando da Capital e Comando Vermelho, duas das maiores facções do país."],["Milícias","grupos armados que dominam bairros e cobram taxas dos moradores."],["Narcoterrorista","traficante tratado como terrorista. Hoje as facções são tratadas como organizações criminosas."]],
+  pt:o("Atacar o dinheiro e as fronteiras: acabar com as finanças das facções e das milícias, controlar as fronteiras e agir junto com estados e municípios.",
+       "p. 27-28",
+       "O plano fala em desarticular as estruturas econômicas e financeiras do crime organizado (“asfixia financeira”, também das milícias), controlar as fronteiras e as redes de financiamento do crime e cooperar com estados e municípios."),
+  pl:o("Tratar as facções como terroristas: PCC, CV, milícias e outras seriam declaradas narcoterroristas, com bloqueio dos bens e combate à lavagem de dinheiro.",
+       "p. 13",
+       "O plano diz que PCC, CV, milícias e as demais facções serão declaradas organizações narcoterroristas, que os ativos delas serão bloqueados e que a lavagem de dinheiro será desarticulada.")},
+/* 2 */ {th:"seg", q:"Para organizar a segurança pública, qual prioridade você prefere?",
+  gl:[["Segurança máxima","presídio para presos muito perigosos, com regras duras de visita e de comunicação."]],
+  pt:o("Unir União, estados e municípios: criar o Ministério da Segurança Pública para coordenar as ações e reforçar a inteligência e a troca de dados.",
+       "p. 28 e 30",
+       "O plano promete criar o Ministério da Segurança Pública depois que a PEC da Segurança Pública for aprovada, para coordenar as políticas com estados e municípios, e consolidar o Sistema de Inteligência de Segurança Pública, modernizando o SINESP e o Infoseg (bases de dados)."),
+  pl:o("Construir mais presídios: 5 novos presídios de segurança máxima para isolar chefes de facções e 500 mil novas vagas em 4 anos, com os estados.",
+       "p. 14",
+       "O plano promete 5 novos presídios de segurança máxima, no modelo adotado por El Salvador, que formarão com os 5 presídios federais atuais um complexo federal para isolar chefes de quadrilha, e meio milhão de novas vagas no sistema prisional em 4 anos, em parceria com os estados.")},
+/* 3 */ {th:"seg", q:"Para reduzir a violência, qual foco você prefere?",
+  gl:[["Maioridade penal","idade a partir da qual a pessoa responde na Justiça como adulto. Hoje é 18 anos."],["Castração química","remédios que reduzem o desejo sexual. A proposta é aplicá-los a condenados por estupro e abuso de crianças."],["Câmeras corporais","câmeras presas ao uniforme do policial, que gravam o atendimento."]],
+  pt:o("Melhorar a polícia: ampliar as câmeras corporais com padrão nacional, reforçar o controle interno e externo, qualificar os profissionais e aproximar a polícia da comunidade.",
+       "p. 30",
+       "O plano fala em ampliar o programa de estímulo às câmeras corporais, com padrões nacionais de uso e guarda das imagens, fortalecer o controle interno e externo da atividade policial, qualificar os profissionais de segurança e adotar policiamento de proximidade."),
+  pl:o("Endurecer as punições: maioridade penal aos 16 anos, punição de maiores de 14 anos em crimes graves e castração química para estupradores e abusadores de crianças.",
+       "p. 13-14",
+       "O plano defende reduzir a maioridade penal de 18 para 16 anos, punir também maiores de 14 anos em crimes graves (como estupro, tráfico, tortura e assassinato) e aplicar a castração química a estupradores e abusadores de crianças condenados.")},
+/* 4 */ {th:"eco", q:"Para equilibrar as contas do governo, qual caminho você prefere?",
+  gl:[["PIB","tudo o que o país produz em um ano. A dívida do governo é comparada a esse valor."],["Superávit","quando o governo arrecada mais do que gasta, sem contar os juros da dívida."]],
+  pt:o("Crescer e gastar melhor: fazer a economia crescer, controlar o aumento do gasto, melhorar a qualidade dele, cobrar impostos mais justos e combater privilégios.",
+       "p. 49",
+       "O plano diz que o resultado fiscal virá do crescimento da economia, do controle do aumento do gasto primário, da melhoria da eficiência e da qualidade do gasto, da justiça tributária e do combate a privilégios e distorções, mantendo o novo arcabouço fiscal."),
+  pl:o("Ter regras claras para gasto e dívida: estabilizar e reduzir a dívida em relação ao PIB, com superávit nas contas e controle dos gastos dos três Poderes.",
+       "p. 71",
+       "O plano promete reformular as regras fiscais, com foco em estabilizar e reduzir a dívida pública, entregar superávits primários, limitar o crédito subsidiado do Tesouro e criar uma regra de controle dos gastos discricionários dos três Poderes. A meta é a estabilidade e depois a queda da relação dívida/PIB.")},
+/* 5 */ {th:"eco", q:"Na reforma dos impostos sobre o consumo, qual direção você prefere?",
+  gl:[["IVA","imposto sobre o consumo de produtos e serviços."],["Guerra fiscal","disputa entre estados que dão vantagens em impostos para atrair empresas."]],
+  pt:o("Trocar a guerra fiscal por investimentos: um fundo regional apoia projetos que reduzem as desigualdades entre regiões, com tratamento justo às pequenas empresas.",
+       "p. 56-57",
+       "O plano diz que a reforma criou o Fundo Nacional de Desenvolvimento Regional, ainda a regulamentar, para substituir a guerra tributária do ICMS, e promete tratamento tributário justo às pequenas empresas na implementação da reforma."),
+  pl:o("Reduzir o peso dos impostos: baixar o IVA, garantir que não haja imposto sobre imposto e reduzir os impostos sobre energia elétrica e combustíveis.",
+       "p. 30-31",
+       "O plano promete rever e redimensionar a reforma tributária para reduzir o IVA e assegurar a não cumulatividade (sem imposto sobre imposto), e diz que vai reduzir os impostos sobre energia elétrica e combustíveis.")},
+/* 6 */ {th:"eco", q:"Sobre a jornada de trabalho, qual modelo você prefere?",
+  gl:[["Escala 6x1","seis dias de trabalho para um de folga por semana."],["44 horas","limite semanal de trabalho que vale hoje na lei."],["Jornada flexível","horário de trabalho que se adapta à vida do trabalhador, combinado com a empresa."],["Mais valor ao que se negocia","o que o trabalhador e a empresa combinam passa a valer mais do que a regra geral da lei, dentro de limites."]],
+  pt:o("Reduzir a jornada na lei: acabar com a escala 6x1 e passar para 40 horas por semana, sem cortar o salário.",
+       "p. 75",
+       "O plano promete manter a ação junto ao Senado para assegurar o fim da escala 6x1 e a redução da jornada de trabalho para 40 horas, sem redução salarial, nos termos aprovados na Câmara dos Deputados."),
+  pl:o("Dar liberdade para combinar: jornada flexível e mais valor ao que trabalhador e empresa negociam, dentro da lei.",
+       "p. 44",
+       "O plano propõe jornada flexível, que caiba na vida de mães, jovens e de quem tem mais dificuldade de entrar no mercado, e defende o negociado sobre o legislado: trabalhador e empresa combinam diretamente as condições de trabalho, dentro da lei. O plano não traz proposta de reduzir a jornada.")},
+/* 7 */ {th:"soc", q:"Para ajudar famílias de baixa renda, qual caminho você prefere?",
+  gl:[["Cashback","devolução, em dinheiro, de parte do valor de uma compra."],["Cursinho popular","curso gratuito ou barato que prepara para o vestibular e o Enem."]],
+  pt:o("Ajudar o jovem a continuar estudando: dar incentivo para ficar no ensino médio, apoiar os cursinhos populares e ampliar alimentação e moradia no ensino superior.",
+       "p. 24 e 32",
+       "O plano promete aprimorar e fortalecer o programa Pé-de-Meia, contra a evasão no ensino médio (para que nenhum jovem pobre deixe a escola por falta de renda), manter os investimentos nos cursinhos populares e ampliar a alimentação e a moradia estudantil de quem está no ensino superior."),
+  pl:o("Premiar quem cumpre metas: programa voluntário que dá pontos por fazer cursos, trabalhar, poupar e pagar as contas em dia, trocados por juros menores, cashback e crédito.",
+       "p. 46 e 19-20",
+       "O plano propõe um programa de adesão voluntária em que atitudes como concluir cursos, trabalhar de forma regular, poupar, formalizar um negócio e pagar as contas em dia geram pontos, trocados por juros menores, cashback, crédito facilitado, descontos e incentivo à poupança. Ninguém perde direitos por não aderir.")},
+/* 8 */ {th:"soc", q:"Para apoiar as mulheres, que linha de ação você prefere?",
+  gl:[["Trabalho de cuidado","cuidar de crianças, idosos e da casa, em geral sem receber por isso."],["Tornozeleira eletrônica","aparelho no tornozelo que monitora a pessoa e avisa as autoridades e a vítima se ela descumprir a ordem de afastamento."]],
+  pt:o("Dividir o trabalho de cuidado: política nacional de cuidados, espaços de acolhida para crianças, lavanderias públicas, cozinhas solidárias e formação de cuidadores.",
+       "p. 25-26",
+       "O plano destaca a Política Nacional de Cuidados e promete apoiar espaços de acolhida de crianças de 3 a 12 anos (as Cuidotecas), fomentar lavanderias públicas, cozinhas solidárias e restaurantes populares e criar um programa de capacitação de cuidadores."),
+  pl:o("Oferecer serviços e proteção: aplicativo com assistente virtual sobre proteção, saúde, emprego e crédito, canais de denúncia integrados e tornozeleira para agressores de maior risco.",
+       "p. 18-19",
+       "O plano propõe um aplicativo com trilhas de proteção e de capacitação, uma assistente virtual com inteligência artificial que orienta sobre medida protetiva, exames, apoio psicológico, emprego e crédito, canais de denúncia integrados e tornozeleira eletrônica para agressores sob medida protetiva de maior risco.")},
+/* 9 */ {th:"edu", q:"Para melhorar o ensino nas escolas, qual caminho você prefere?",
+  gl:[["Método fônico","ensina a ler ligando cada letra ao seu som, antes de passar para palavras e textos."],["Alfabetizada na idade certa","lendo e escrevendo até o fim do 2º ano, por volta dos 7 anos."],["Cívico-militar","escola pública em que militares ajudam na gestão e na disciplina. Os professores continuam civis."],["Tempo integral","pelo menos 7 horas de escola por dia."]],
+  pt:o("Ter metas e mais tempo de escola: chegar a 80% das crianças alfabetizadas na idade certa e dar prioridade às escolas de tempo integral.",
+       "p. 31",
+       "O plano mantém a meta de chegar a 80% das crianças alfabetizadas na idade certa e diz que o fomento à expansão da educação em tempo integral terá absoluta prioridade."),
+  pl:o("Apostar em outro método e outro modelo de escola: alfabetizar pelo método fônico, que liga cada letra ao seu som, e ampliar as escolas cívico-militares.",
+       "p. 35",
+       "O plano diz que vai priorizar o método fônico na alfabetização, ensinando a criança a ligar cada som à sua letra, e ampliar as Escolas Cívico-Militares.")},
+/* 10 */ {th:"edu", q:"Quando faltam vagas na escola ou na creche, qual caminho você prefere?",
+  gl:[["Instituto federal","escola pública federal gratuita de ensino técnico e superior."],["Voucher","vale pago pelo governo para a família usar em creche ou escola privada."]],
+  pt:o("Ampliar a rede pública: apoiar estados e municípios a construir creches e escolas e abrir 111 novos institutos federais, em 106 municípios.",
+       "p. 31-33",
+       "O plano promete ampliar o fomento a estados e municípios para creches e escolas (o Novo PAC apoiou 3.562 até agora) e fala em mais 111 institutos federais, com novos campi em 106 municípios, e em nova expansão e interiorização da educação superior pública."),
+  pl:o("Dar escolha à família: onde faltar vaga pública, vale (voucher) para creche privada credenciada ou para matricular o filho em outra escola.",
+       "p. 21 e 36",
+       "O plano propõe o voucher-creche, para a rede privada credenciada onde não houver vaga pública, e um voucher educacional para a família matricular o filho em outra escola onde faltar vaga na rede pública.")},
+/* 11 */ {th:"sau", q:"Para reduzir as filas de consultas e exames, o que deve ter prioridade?",
+  gl:[["Terceiro turno","atendimento além do horário comum, por exemplo à noite."],["Prontuário eletrônico","ficha digital com consultas, exames e vacinas do paciente."],["Risco clínico","a gravidade do caso de cada paciente."]],
+  pt:o("Ampliar o atendimento: terceiro turno nos serviços de saúde, mutirões e uma fila única digital, ordenada pelo risco clínico de cada paciente.",
+       "p. 37-38",
+       "O plano diz que a expansão do terceiro turno nos serviços de saúde e os mutirões de atendimento seguirão como estratégias centrais para ampliar consultas, exames e cirurgias, e que a regulação do acesso à atenção especializada terá inteligência artificial e fila única digital, ordenada pelo risco clínico."),
+  pl:o("Usar tecnologia: inteligência artificial para marcar consultas e exames na primeira vaga disponível e um prontuário eletrônico único, ligado ao CPF.",
+       "p. 25-26",
+       "O plano promete implantar o prontuário eletrônico único, vinculado ao CPF e integrado ao Gov.br, com histórico de consultas, exames, vacinas e prescrições, e usar inteligência artificial para agilizar o agendamento de consultas e exames, encaixando o paciente na primeira vaga disponível.")},
+/* 12 */ {th:"amb", q:"O que deve vir primeiro na política de energia?",
+  gl:[["Fracking","técnica que injeta água, areia e produtos químicos sob pressão em rochas profundas para extrair gás."],["Combustíveis fósseis","petróleo, gás e carvão, que liberam gases do efeito estufa."],["Biocombustíveis","combustíveis feitos de plantas, como o etanol de cana e o biodiesel."]],
+  pt:o("Acelerar a transição energética: ampliar as fontes renováveis e trocar aos poucos os combustíveis fósseis por biocombustíveis e fontes de baixo carbono.",
+       "p. 64",
+       "O plano diz que o governo continuará a assegurar a segurança energética, avançar na transição energética justa e combater a pobreza energética, aumentando a participação das fontes renováveis e acelerando a substituição progressiva de combustíveis fósseis por biocombustíveis e combustíveis de baixa intensidade de carbono."),
+  pl:o("Aproveitar petróleo e gás: permitir o fracking, com cuidado ambiental, e investir em refino, escoamento e transporte de combustíveis e gás.",
+       "p. 52-53",
+       "O plano propõe um Programa Nacional de Segurança Energética com foco em refino, processamento, escoamento e transporte de combustíveis e gás, que permita o gás não convencional (fracking) com responsabilidade ambiental, e fala em transformar a riqueza de petróleo e gás em energia e emprego.")},
+/* 13 */ {th:"amb", q:"Como tratar as terras indígenas e quilombolas?",
+  gl:[["Título da terra","documento que reconhece formalmente a posse da terra por comunidades quilombolas."],["Demarcação","processo que define oficialmente os limites de uma terra indígena."]],
+  pt:o("Proteger e reconhecer as terras: titular territórios quilombolas, demarcar terras indígenas e retirar invasores delas, com saúde e educação específicas.",
+       "p. 20-21 e 60",
+       "O plano promete acelerar a titulação de territórios quilombolas, continuar as ações de demarcação e desintrusão (retirada de invasores) de terras indígenas, manter a educação escolar indígena e a atenção diferenciada à saúde indígena."),
+  pl:o("Dar autonomia para produzir: indígenas e quilombolas decidem as atividades produtivas em suas terras, seguindo as regras ambientais, com indenização se houver restrições.",
+       "p. 50 e 61",
+       "O plano diz que será dada autonomia aos povos indígenas e quilombolas para decidir sobre atividades produtivas em suas terras, com respeito às regras ambientais, e com indenização de eventuais restrições ao usufruto.")},
+/* 14 */ {th:"ins", q:"Como o Brasil deve se relacionar com outros países?",
+  gl:[["BRICS","bloco de países emergentes criado por Brasil, Rússia, Índia e China, hoje com mais membros."],["G20","grupo das maiores economias do mundo."],["Sul Global","países em desenvolvimento, em geral da África, da Ásia e da América Latina."],["FMI e Banco Mundial","organismos internacionais que emprestam dinheiro a países e financiam projetos."]],
+  pt:o("Relacionar-se com todas as regiões, de forma independente: mais proximidade com BRICS, G20, Sul Global e União Africana, e reforma da ONU, do FMI e do Banco Mundial.",
+       "p. 80-81",
+       "O plano defende uma política externa universalista e independente, a aproximação com o BRICS, o Sul Global e o G20, a cooperação com a União Africana e a ASEAN, a reforma das Nações Unidas (Conselho de Segurança) e da OMC e a democratização do FMI e do Banco Mundial."),
+  pl:o("Priorizar o comércio e os parceiros tradicionais: boa relação com Argentina, Estados Unidos e Israel e negociação com todos, da China à União Europeia.",
+       "p. 62",
+       "O plano diz que o Brasil vai privilegiar parceiros interessados no ganho mútuo do comércio, sem escolher amigos por afinidade ideológica, reverter o desgaste das relações com Argentina, Estados Unidos e Israel e negociar com todos os que interessam ao Brasil, da China à União Europeia.")},
+/* 15 */ {th:"ins", q:"Sobre a Justiça e o STF, qual caminho você prefere?",
+  gl:[["Casos que o STF julga diretamente","processos contra certas autoridades, como parlamentares (o “foro privilegiado”). A proposta é passá-los ao STJ e aos tribunais regionais federais."],["Decisão de um só ministro","chamada de decisão monocrática: vale sem votação do plenário, até ser analisada pelos demais ministros."],["Quarentena","tempo de espera antes de assumir um cargo."]],
+  pt:o("Conversar com o Judiciário: ter diálogo permanente com os tribunais, respeitando a autonomia dos Poderes, para reduzir a lentidão dos processos e aperfeiçoar a Justiça.",
+       "p. 16",
+       "O plano propõe continuar o diálogo permanente com os atores do Judiciário, respeitada a autonomia dos Poderes, para aperfeiçoar o sistema de Justiça, marcado por lentidão e excesso de processos e recursos. Não traz medidas específicas sobre o STF."),
+  pl:o("Novas regras para o STF: fim dos casos criminais que ele julga diretamente, limite às decisões de um só ministro e quarentena de 1 ano para ministros de governo indicados ao tribunal.",
+       "p. 65-66",
+       "O plano propõe: fim das competências criminais originárias do STF (parlamentares julgados pelo STJ ou pelos TRFs); limitação das decisões monocráticas; revisão do escopo das ADPFs; quarentena de 1 ano para Ministros de Estado serem indicados ao STF; e impedimento de parentes de até terceiro grau, e de seus escritórios, de atuar no tribunal do respectivo magistrado.")}
+];
+var N = Q.length;
+
+/* ---------------------------------------------------------------------
+   Estado (progresso salvo localmente, quando o navegador permitir)
+--------------------------------------------------------------------- */
+var KEY = "afinidade2026.v2";
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function seq(n){var a=[];for(var i=0;i<n;i++)a.push(i);return a;}
+function newState(){
+  var flips=[];for(var i=0;i<N;i++)flips.push(i<N/2);
+  return {v:2,order:shuffle(seq(N)),flips:shuffle(flips),ans:{},pos:0,done:false,started:false};
+}
+function load(){
+  try{
+    var r=localStorage.getItem(KEY); if(!r) return null;
+    var s=JSON.parse(r);
+    if(s&&s.v===2&&s.order&&s.order.length===N&&s.flips&&s.flips.length===N&&s.ans) return s;
+  }catch(e){}
+  return null;
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function wipe(){try{localStorage.removeItem(KEY);}catch(e){}}
+try{localStorage.removeItem("afinidade2026.v1");}catch(e){}
+var S = load() || newState();
+
+var view = document.getElementById("view");
+var busy = false;
+
+function answeredCount(){var c=0;for(var k in S.ans){if(S.ans.hasOwnProperty(k))c++;}return c;}
+function focusHeading(){var h=view.querySelector("h1,h2");if(h){h.setAttribute("tabindex","-1");try{h.focus({preventScroll:true});}catch(e){}}}
+function top(){try{window.scrollTo(0,0);}catch(e){}}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+/* ---------------------------------------------------------------------
+   Telas
+--------------------------------------------------------------------- */
+function renderIntro(){
+  var n = answeredCount();
+  var resume = "";
+  if(S.done){
+    resume = '<div class="row"><button class="btn" data-a="result">Ver meu resultado</button><button class="btn ghost" data-a="restart">Refazer o teste</button></div>';
+  } else if(n>0){
+    resume = '<div class="row"><button class="btn" data-a="resume">Continuar (pergunta '+(firstUnanswered()+1)+' de '+N+')</button><button class="btn ghost" data-a="restart">Recomeçar</button></div>';
+  } else {
+    resume = '<div class="row"><button class="btn" data-a="start">Começar o teste</button></div>';
+  }
+  view.innerHTML =
+    '<section class="hero">'+
+      '<h1>De qual candidato você está mais perto?</h1>'+
+      '<p class="lead">São '+N+' perguntas com duas alternativas cada. Em cada uma, escolha a proposta com a qual você mais concorda. No fim, você vê qual candidato ficou mais próximo das suas escolhas.</p>'+
+      '<ul class="facts">'+
+        '<li><span class="n">1</span><div><strong>Sem pistas</strong><span class="d">As alternativas não citam partidos nem candidatos e usam a mesma estrutura, sem indicar o que é situação ou oposição. A ordem das perguntas e a posição de cada alternativa são sorteadas.</span></div></li>'+
+        '<li><span class="n">2</span><div><strong>Termos explicados</strong><span class="d">Quando a pergunta traz um termo técnico, uma caixa “Para entender”, logo abaixo das alternativas, explica em uma linha.</span></div></li>'+
+        '<li><span class="n">3</span><div><strong>Só o que está nos planos</strong><span class="d">Cada alternativa foi conferida diretamente nos planos de governo de Flávio Bolsonaro (PL) e de Lula (PT) entregues ao TSE. Reportagens não são usadas como fonte.</span></div></li>'+
+        '<li><span class="n">4</span><div><strong>Página do plano no final</strong><span class="d">Na revisão, cada alternativa mostra a página do plano, um resumo do que o plano diz e o link para o PDF no TSE.</span></div></li>'+
+      '</ul>'+
+      resume+
+      '<p class="fine">Este teste mede afinidade com propostas dos planos de governo entregues ao TSE. Não avalia viabilidade, histórico de governo nem substitui a leitura dos planos completos.</p>'+
+    '</section>';
+  focusHeading();
+}
+
+function glossary(q){
+  if(!q.gl||!q.gl.length) return "";
+  return '<aside class="gl" aria-label="Para entender os termos desta pergunta"><p class="gk">Para entender</p><ul>'+
+    q.gl.map(function(g){return '<li><strong>'+esc(g[0])+'</strong> — '+esc(g[1])+'</li>';}).join("")+'</ul></aside>';
+}
+
+function renderQuestion(){
+  var qi = S.order[S.pos];
+  var q = Q[qi];
+  var ptFirst = S.flips[qi];
+  var first = ptFirst ? "pt" : "pl", second = ptFirst ? "pl" : "pt";
+  var cur = S.ans[qi];
+  var ticks = "";
+  for(var i=0;i<N;i++){ticks += '<span class="'+(i<S.pos?"on":(i===S.pos?"now":""))+'"></span>';}
+  function opt(k,letter){
+    return '<button class="opt" type="button" data-a="pick" data-k="'+k+'" aria-pressed="'+(cur===k?"true":"false")+'">'+
+      '<span class="badge" aria-hidden="true">'+letter+'</span><span class="tx">'+esc(q[k].t)+'</span></button>';
+  }
+  view.innerHTML =
+    '<section class="q">'+
+      '<div class="tally" role="progressbar" aria-label="Progresso do teste" aria-valuemin="0" aria-valuemax="'+N+'" aria-valuenow="'+S.pos+'">'+ticks+'</div>'+
+      '<div class="meta"><span>Pergunta '+(S.pos+1)+' de '+N+'</span><span class="th">'+esc(THEMES[q.th])+'</span></div>'+
+      '<h2>'+esc(q.q)+'</h2>'+
+      '<div class="opts" role="group" aria-label="Alternativas">'+opt(first,"A")+opt(second,"B")+'</div>'+
+      glossary(q)+
+      '<div class="nav"><button class="link" type="button" data-a="back"'+(S.pos===0?" disabled":"")+'>← Voltar</button>'+
+      '<span class="hint">Atalhos: A, B e ←</span></div>'+
+    '</section>';
+  focusHeading();
+}
+
+function tally(){
+  var c={pt:0,pl:0}, byTheme={};
+  THEME_ORDER.forEach(function(t){byTheme[t]={pt:0,pl:0,n:0};});
+  for(var i=0;i<N;i++){
+    var a=S.ans[i]; if(!a) continue;
+    c[a]++; byTheme[Q[i].th][a]++;
+  }
+  for(var j=0;j<N;j++){byTheme[Q[j].th].n++;}
+  return {c:c,byTheme:byTheme};
+}
+
+function chip(k){var c=CAND[k];return '<span class="chip '+c.cls+'"><span class="mk '+c.cls+'" aria-hidden="true"></span>'+esc(c.name)+' · '+c.party+'</span>';}
+
+function pageOf(g){var m=String(g).match(/\d+/);return m?m[0]:"";}
+function srcBlock(k,a){
+  var first=pageOf(a.g);
+  var url=PDF[k]+(first?"#page="+first:"");
+  return '<div class="src"><div class="sl">Referência no plano de '+esc(CAND[k].name)+'</div>'+
+    '<div class="pg">Plano de governo entregue ao TSE, <strong>'+esc(a.g)+'</strong> · <a href="'+esc(url)+'" target="_blank" rel="noopener">abrir o plano no TSE (PDF)</a></div>'+
+    '<div class="nt"><strong>O plano diz:</strong> '+esc(a.n)+'</div></div>';
+}
+
+function renderResult(){
+  var T = tally();
+  var total = T.c.pt + T.c.pl;
+  var ptPct = total ? Math.round(T.c.pt/total*100) : 0;
+  var pct = {pt:ptPct, pl:total?100-ptPct:0};
+  var diff = Math.abs(T.c.pt - T.c.pl);
+  var lead = T.c.pt>T.c.pl ? "pt" : (T.c.pl>T.c.pt ? "pl" : "");
+  var other = lead==="pt" ? "pl" : "pt";
+
+  var headline, verdict;
+  if(lead){
+    var L=CAND[lead], O=CAND[other];
+    headline = '<p class="kick">Seu resultado</p><h1>Você ficou mais perto de <span class="nm"><span class="mk '+L.cls+'" aria-hidden="true"></span>'+esc(L.name)+' ('+L.party+')</span></h1>';
+    verdict = 'Das '+N+' propostas, você escolheu '+T.c[lead]+' do programa de '+L.name+' ('+L.party+') e '+T.c[other]+' do programa de '+O.name+' ('+O.party+'). A diferença foi de '+diff+(diff===1?' escolha.':' escolhas.')+(diff<=2?' Como ela foi pequena, vale ler os dois planos com calma.':'');
+  } else {
+    headline = '<p class="kick">Seu resultado</p><h1>Empate: '+T.c.pl+' a '+T.c.pt+' entre Flávio Bolsonaro (PL) e Lula (PT)</h1>';
+    verdict = 'Você escolheu exatamente o mesmo número de propostas de cada programa. Veja abaixo, tema por tema, onde cada um ficou à frente.';
+  }
+
+  var figs = CAND_ORDER.map(function(k){
+    var c=CAND[k];
+    return '<div class="fig '+c.cls+(lead===k?' lead':'')+'"><div class="who"><span class="mk '+c.cls+'" aria-hidden="true"></span><span>'+esc(c.name)+' · '+c.party+'</span></div>'+
+      '<div class="pct">'+pct[k]+'%</div><div class="cnt">'+T.c[k]+' de '+N+' escolhas</div></div>';
+  }).join("");
+  var bar = CAND_ORDER.map(function(k){
+    return pct[k]>0 ? '<div class="s '+CAND[k].cls+'" style="width:'+pct[k]+'%"></div>' : "";
+  }).join("");
+
+  var themes = THEME_ORDER.map(function(t){
+    var d=T.byTheme[t];
+    var segs = CAND_ORDER.map(function(k){
+      return d[k]>0 ? '<div class="s '+CAND[k].cls+'" style="width:'+(d[k]/d.n*100)+'%"></div>' : "";
+    }).join("");
+    return '<div class="theme"><div class="top"><b>'+esc(THEMES[t])+'</b><span>'+
+      CAND_ORDER.map(function(k){return esc(CAND[k].name.split(" ")[0])+" "+d[k];}).join(" · ")+
+      '</span></div><div class="tb" role="img" aria-label="'+esc(THEMES[t])+': '+
+      CAND_ORDER.map(function(k){return CAND[k].name+" "+d[k]+" de "+d.n;}).join(", ")+'">'+segs+'</div></div>';
+  }).join("");
+
+  var review = Q.map(function(q,i){
+    var a = S.ans[i]; var b = a==="pt"?"pl":"pt";
+    function box(k,mine){
+      var src=q[k];
+      return '<div class="rvo'+(mine?' mine':'')+'"><div class="tag">'+chip(k)+'<em>'+(mine?"Sua escolha":"Outra alternativa")+'</em></div>'+
+        '<div class="tx">'+esc(src.t)+'</div>'+srcBlock(k,src)+'</div>';
+    }
+    return '<details class="rv"><summary><span class="num">'+(i+1)+'</span>'+
+      '<span class="st"><small>'+esc(THEMES[q.th])+'</small>'+esc(q.q)+'</span>'+chip(a)+'</summary>'+
+      '<div class="rvb">'+box(a,true)+box(b,false)+'</div></details>';
+  }).join("");
+
+  view.innerHTML =
+    '<section class="res">'+
+      headline+
+      '<p class="verdict">'+esc(verdict)+'</p>'+
+      '<div class="figs">'+figs+'</div>'+
+      '<div class="bar" role="img" aria-label="'+CAND_ORDER.map(function(k){return CAND[k].name+" "+pct[k]+"%";}).join(", ")+'">'+bar+'</div>'+
+      '<div class="sec"><h2>Por tema</h2><p class="sub">Quantas das suas escolhas em cada tema vieram do programa de cada candidato.</p><div class="themes">'+themes+'</div></div>'+
+      '<div class="sec"><h2>Revise suas respostas</h2><p class="sub">Toque em uma pergunta para ver, em cada alternativa, o candidato, a página do plano de governo e um resumo do que o plano diz.</p>'+review+'</div>'+
+      '<div class="about"><h2>Como ler este resultado</h2><ul>'+
+        '<li><strong>Afinidade com propostas dos planos.</strong> O teste não avalia viabilidade, histórico de governo nem custo das propostas, e não é recomendação de voto.</li>'+
+        '<li><strong>A fonte é o plano, não a imprensa.</strong> Cada alternativa foi conferida no PDF do plano entregue ao TSE (Lula, 84 páginas; Flávio Bolsonaro, 76 páginas) e cita a página. Quando uma proposta não está no plano, ela não entra.</li>'+
+        '<li><strong>Resumo, não cópia.</strong> As alternativas são resumos em linguagem simples, escritos com tamanho parecido e sem citar candidatos ou partidos. O resumo “O plano diz” na revisão é mais próximo do texto. Para o original, abra a página indicada.</li>'+
+        '<li><strong>Nem todo tema tem proposta dos dois lados.</strong> Na pergunta sobre o STF, por exemplo, o plano de Lula não traz medidas específicas, só diálogo com o Judiciário. A alternativa mostra o que está escrito, e não o que se supõe.</li>'+
+        '<li><strong>Seleção das perguntas.</strong> Escolhi por critério editorial '+N+' pares de propostas em que os planos mais divergem, nos temas mais centrais da campanha: segurança, economia e trabalho, proteção social, educação, saúde, meio ambiente, política externa e instituições. O número é ímpar de propósito, para não haver empate.</li>'+
+        '<li><strong>Textos originais:</strong> <a href="'+PDF.pt+'" target="_blank" rel="noopener">plano de Lula (PT)</a> e <a href="'+PDF.pl+'" target="_blank" rel="noopener">plano de Flávio Bolsonaro (PL)</a>, ambos no TSE.</li>'+
+      '</ul></div>'+
+      '<div class="row again"><button class="btn" data-a="restart">Refazer o teste</button></div>'+
+    '</section>';
+  top(); focusHeading();
+}
+
+/* ---------------------------------------------------------------------
+   Navegação
+--------------------------------------------------------------------- */
+function pick(k){
+  if(busy) return;
+  var qi=S.order[S.pos];
+  S.ans[qi]=k; save();
+  var btns=view.querySelectorAll(".opt");
+  for(var i=0;i<btns.length;i++){btns[i].setAttribute("aria-pressed",btns[i].getAttribute("data-k")===k?"true":"false");}
+  busy=true;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setTimeout(function(){
+    busy=false;
+    if(S.pos>=N-1){
+      S.done = answeredCount()===N; save();
+      if(S.done){renderResult();} else {S.pos=firstUnanswered(); save(); renderQuestion();}
+    } else {
+      S.pos++; save(); renderQuestion(); top();
+    }
+  }, reduce?0:260);
+}
+function firstUnanswered(){for(var p=0;p<N;p++){if(!S.ans[S.order[p]])return p;}return N-1;}
+function back(){ if(S.pos>0 && !busy){S.pos--; save(); renderQuestion(); top();} }
+
+view.addEventListener("click",function(e){
+  var el=e.target.closest("[data-a]"); if(!el) return;
+  var a=el.getAttribute("data-a");
+  if(a==="start"){S.started=true; S.pos=0; save(); renderQuestion(); top();}
+  else if(a==="resume"){S.started=true; S.pos=firstUnanswered(); save(); renderQuestion(); top();}
+  else if(a==="restart"){wipe(); S=newState(); S.started=true; save(); renderQuestion(); top();}
+  else if(a==="result"){renderResult();}
+  else if(a==="pick"){pick(el.getAttribute("data-k"));}
+  else if(a==="back"){back();}
+});
+document.addEventListener("keydown",function(e){
+  if(e.ctrlKey||e.metaKey||e.altKey) return;
+  if(!view.querySelector(".opt")) return;
+  var qi=S.order[S.pos], ptFirst=S.flips[qi];
+  var k=e.key.toLowerCase();
+  if(k==="a"||k==="1"){pick(ptFirst?"pt":"pl");}
+  else if(k==="b"||k==="2"){pick(ptFirst?"pl":"pt");}
+  else if(k==="arrowleft"){back();}
+});
+
+/* Retoma em que ponto parou: abre sempre pela tela de abertura, que oferece continuar. */
+S.started = false;
+renderIntro();
+})();
+</script>
+</body>
+</html>
